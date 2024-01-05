@@ -1,13 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import axios from "axios"
-
-import { Modal } from '@/components/ui/modal'
-
-import { useStoreModal } from '@/hooks/use-store-modal'
 import { useAuth } from '@clerk/nextjs'
-import { useToast } from '@/components/ui/use-toast'
+import { useStoreModal } from '@/hooks/use-store-modal'
+import axios from "axios"
 
 import * as z from 'zod'
 import { useForm } from 'react-hook-form'
@@ -21,7 +17,9 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
+import { useToast } from '@/components/ui/use-toast'
 import { Input } from "@/components/ui/input"
+import { Modal } from '@/components/ui/modal'
 
 
 const formSchema = z.object({
@@ -51,8 +49,9 @@ export function StoreModal() {
         }
     })
 
-    const onSubmit = async (e: z.infer<typeof formSchema>) => {
 
+    // Asynchronous function handling submitting the form
+    const onSubmit = async (e: z.infer<typeof formSchema>) => {
         try {
             // set loading state to be true during API call
             setLoading(true)
