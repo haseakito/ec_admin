@@ -1,0 +1,42 @@
+name: Build Next.js application
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: cache-node-modules
+        uses: actions/cache@v3
+        id: node_modules_cache_id
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
+        run: |
+          npm i
+
+      - name: Build
+        env:
+          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}}
+          CLERK_SECRET_KEY: ${{secrets.CLERK_SECRET_KEY}}
+        
+        run: |
+          npm run build
