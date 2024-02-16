@@ -32,16 +32,26 @@ export function AlertModal({
 
   return (
     <Modal
-      title="Careful!"
+      title="Be careful!"
       description={description ? description : "This action cannot be undone"}
       isOpen={isOpen}
       onClose={onClose}
     >
-      <div className="pt-6 space-x flex items-center justify-end w-full">
-        <Button variant="outline" disabled={loading} onClick={onClose}>
+      <div className="pt-4 space-x-2 flex items-center justify-end w-full">
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={loading}
+          onClick={onClose}
+        >
           Cancel
         </Button>
-        <Button variant="destructive" disabled={loading} onClick={onConfirm}>
+        <Button
+          variant="destructive"
+          size="sm"
+          disabled={loading}
+          onClick={onConfirm}
+        >
           Confirm
         </Button>
       </div>
