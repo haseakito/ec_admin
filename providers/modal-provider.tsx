@@ -5,7 +5,7 @@ import {
     useState
 } from "react"
 
-import { StoreModal } from "@/components/store-modal"
+import { StoreModal } from "@/components/modals/store-modal"
 
 export function ModalProvider() {
 
