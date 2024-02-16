@@ -1,0 +1,8 @@
+export function formatDate(datetime: string): string {
+  const date = new Date(datetime);
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-based
+  const year = date.getFullYear().toString();
+
+  return `${day}/${month}/${year}`;
+}
