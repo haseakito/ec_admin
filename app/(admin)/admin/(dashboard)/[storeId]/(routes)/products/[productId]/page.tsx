@@ -12,7 +12,7 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   // Fetch product with product id
-  const product: Product = await fetchProduct(params.productId);
+  const product = await fetchProduct(params.productId);
 
   return (
     <div className="flex-col">
