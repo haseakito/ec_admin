@@ -1,14 +1,18 @@
 import React from "react";
-import { Navbar } from "./components/navbar";
+import { AdminNavbar } from "./components/navbar";
+import { fetchStores } from "@/services/store";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Fetch stores
+  const stores = await fetchStores();
+
   return (
     <>
-      <Navbar />
+      <AdminNavbar stores={stores} />
       {children}
     </>
   );
