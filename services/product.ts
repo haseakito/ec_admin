@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs";
 
-export async function fetchProducts(storeId: string) {
+export async function fetchProducts(storeId: string): Promise<Product[]> {
   const { getToken } = auth();
 
   // GET request to fetch all stores
@@ -25,7 +25,7 @@ export async function fetchProducts(storeId: string) {
   return body;
 }
 
-export async function fetchProduct(productId: string) {
+export async function fetchProduct(productId: string): Promise<Product> {
   const { getToken } = auth();
 
   // GET request to fetch a specific store with store id provided
