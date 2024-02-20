@@ -12,10 +12,6 @@ export async function fetchStores(): Promise<Store[]> {
     },
   });
 
-  if (!res.ok) {
-    throw new Error();
-  }
-
   // Parse json body
   const body = await res.json();
 
