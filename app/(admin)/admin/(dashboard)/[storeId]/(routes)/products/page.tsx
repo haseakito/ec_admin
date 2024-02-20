@@ -12,7 +12,9 @@ interface ProductsPageProps {
 
 export default async function ProductsPage({ params }: ProductsPageProps) {
   // GET request to backend API to fetch products associated with the store
-  const products = await fetchProducts(params.storeId);
+  const products = await fetchProducts({
+    storeId: params.storeId
+  });
 
   // Format products for data table
   const formattedProducts: ProductColumn[] = products.map((product) => ({
