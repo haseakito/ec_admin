@@ -1,11 +1,24 @@
 import { auth } from "@clerk/nextjs";
+import qs from "query-string";
 
-export async function fetchProducts(storeId: string): Promise<Product[]> {
+interface FetchProductsQuery {
+  storeId: string;
+  offset?: number;
+}
+
+export async function fetchProducts(query: FetchProductsQuery): Promise<Product[]> {
   const { getToken } = auth();
+
+  const url = qs.stringifyUrl({
+    url: process.env.NEXT_PUBLIC_API_URL + `/stores/${query.storeId}/products`,
+    query: {
+        offset: query.offset ? query.offset : 0
+    }
+  })
 
   // GET request to fetch all stores
   const res = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + `/stores/${storeId}/products`,
+    url,
     {
       method: "GET",
       mode: "cors",
@@ -14,10 +27,6 @@ export async function fetchProducts(storeId: string): Promise<Product[]> {
       },
     }
   );
-
-  if (!res.ok) {
-    throw new Error();
-  }
 
   // Parse json body
   const body = await res.json();
