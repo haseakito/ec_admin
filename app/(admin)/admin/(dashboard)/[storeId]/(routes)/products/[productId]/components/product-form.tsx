@@ -18,15 +18,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Heading } from "@/components/ui/heading";
-import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-
-import { AlertModal } from "@/components/modals/alert-modal";
-import { Trash } from "lucide-react";
 
 interface ProductFormProps {
   product: Product;
@@ -46,9 +41,6 @@ const formSchema = z.object({
 
 export function ProductForm({ product }: ProductFormProps) {
   const { getToken } = useAuth();
-
-  // Boolean state handling modal state
-  const [open, setOpen] = useState(false);
 
   // Boolean state handling loading during API request
   const [loading, setLoading] = useState(false);
@@ -128,6 +120,9 @@ export function ProductForm({ product }: ProductFormProps) {
 
       // Refresh the page to update content
       router.refresh();
+
+      // Redirect the user to product overview page
+      router.push(`/admin/${params.storeId}/products`);
 
       // Show successful toast
       toast.success(toastMessage);
