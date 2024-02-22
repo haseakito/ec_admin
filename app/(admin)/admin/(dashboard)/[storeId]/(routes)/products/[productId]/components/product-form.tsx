@@ -84,7 +84,7 @@ export function ProductForm({ product }: ProductFormProps) {
       if (product) {
         // PATCH request to the backend API
         axios.patch(
-          process.env.NEXT_PUBLIC_API_URL + `/products/${params.productId}`,
+          process.env.NEXT_PUBLIC_API_URL + `/admin/products/${params.productId}`,
           {
             name: e.name,
             description: e.description,
@@ -102,7 +102,7 @@ export function ProductForm({ product }: ProductFormProps) {
         // PATCH request to the backend API
         axios.post(
           process.env.NEXT_PUBLIC_API_URL +
-            `/stores/${params.storeId}/products`,
+            `/admin/stores/${params.storeId}/products`,
           {
             name: e.name,
             description: e.description,
