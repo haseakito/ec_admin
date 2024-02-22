@@ -53,7 +53,7 @@ export function StoreModal() {
 
       // POST request to the backend API
       const res = await axios.post(
-        process.env.NEXT_PUBLIC_API_URL + "/stores",
+        process.env.NEXT_PUBLIC_API_URL + "/admin/stores",
         {
           name: e.name,
           user_id: userId,
