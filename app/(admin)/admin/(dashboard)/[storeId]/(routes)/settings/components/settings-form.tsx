@@ -61,7 +61,7 @@ export function SettingsForm({ store }: SettingsFormProps) {
 
       // PATCH request to the backend API
       axios.patch(
-        process.env.NEXT_PUBLIC_API_URL + `/stores/${params.storeId}`,
+        process.env.NEXT_PUBLIC_API_URL + `/admin/stores/${params.storeId}`,
         e,
         {
           headers: {

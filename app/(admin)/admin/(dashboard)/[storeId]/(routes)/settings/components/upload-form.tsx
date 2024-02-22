@@ -78,7 +78,7 @@ export function UploadForm({ store }: UploadFormProps) {
 
       // POST request to backend API
       await axios.post(
-        process.env.NEXT_PUBLIC_API_URL + `/stores/${params.storeId}/upload`,
+        process.env.NEXT_PUBLIC_API_URL + `/admin/stores/${params.storeId}/upload`,
         formData,
         {
           headers: {

@@ -36,7 +36,7 @@ export function SettingsTitle() {
 
       // PATCH request to the backend API
       axios.delete(
-        process.env.NEXT_PUBLIC_API_URL + `/stores/${params.storeId}`,
+        process.env.NEXT_PUBLIC_API_URL + `/admin/stores/${params.storeId}`,
         {
           headers: {
             Authorization: `Bearer ${await getToken()}`,
