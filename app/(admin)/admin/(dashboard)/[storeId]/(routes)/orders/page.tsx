@@ -1,7 +1,7 @@
-import { fetchOrders } from "@/services/order";
+import { fetchOrders } from "@/services/admin/admin-order";
+import { formatDate } from "@/utils/format";
 import { OrderClient } from "./components/client";
 import { OrderColumn } from "./components/columns";
-import { formatDate } from "@/utils/format";
 
 interface OrdersPageProps {
   params: {
@@ -13,7 +13,6 @@ export default async function OrdersPage({ params }: OrdersPageProps) {
   // Fetch orders with the store id
   const orders = await fetchOrders(params.storeId);
 
-
   // Format orders for data table
   const formattedOrders: OrderColumn[] = orders.map((order) => ({
     id: order.id,
@@ -21,7 +20,7 @@ export default async function OrdersPage({ params }: OrdersPageProps) {
       .map((orderItem) => orderItem.product.name)
       .join(", "),
     totalPrice: order.order_items.reduce((total, item) => {
-        return total + item.product.price
+      return total + item.product.price;
     }, 0),
     isPaid: order.is_paid,
     createdAt: formatDate(order.created_at),
