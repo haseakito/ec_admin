@@ -1,6 +1,5 @@
-import React from "react";
 import { ProductsClient } from "./components/client";
-import { fetchProducts } from "@/services/product";
+import { fetchProducts } from "@/services/admin/admin-product";
 import { ProductColumn } from "./components/columns";
 import { formatDate } from "@/utils/format";
 
