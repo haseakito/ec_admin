@@ -119,7 +119,7 @@ export function UploadForm({ store }: UploadFormProps) {
 
       // DELETE request to backend API
       await axios.delete(
-        process.env.NEXT_PUBLIC_API_URL + `/stores/${params.storeId}/assets`,
+        process.env.NEXT_PUBLIC_API_URL + `/admin/stores/${params.storeId}/assets`,
         {
           headers: {
             Authorization: `Bearer ${await getToken()}`,
