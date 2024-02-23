@@ -15,3 +15,9 @@ type OrderItem = {
   product_id: string;
   product: Product;
 };
+
+type Revenue = {
+  orders: Order[];
+  total_revenue: number;
+  sales_count: number;
+};
