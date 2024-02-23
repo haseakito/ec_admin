@@ -6,27 +6,26 @@ interface FetchProductsQuery {
   offset?: number;
 }
 
-export async function fetchProducts(query: FetchProductsQuery): Promise<Product[]> {
+export async function fetchProducts(
+  query: FetchProductsQuery
+): Promise<Product[]> {
   const { getToken } = auth();
 
   const url = qs.stringifyUrl({
     url: process.env.NEXT_PUBLIC_API_URL + `/stores/${query.storeId}/products`,
     query: {
-        offset: query.offset ? query.offset : 0
-    }
-  })
+      offset: query.offset ? query.offset : 0,
+    },
+  });
 
   // GET request to fetch all stores
-  const res = await fetch(
-    url,
-    {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        Authorization: `Bearer ${await getToken()}`,
-      },
-    }
-  );
+  const res = await fetch(url, {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      Authorization: `Bearer ${await getToken()}`,
+    },
+  });
 
   // Parse json body
   const body = await res.json();
