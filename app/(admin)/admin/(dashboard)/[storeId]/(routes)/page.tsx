@@ -1,10 +1,10 @@
-import { fetchRevenue } from "@/services/order";
+import { fetchRevenue } from "@/services/admin/admin-order";
 import { formatGraph } from "@/utils/format";
 
+import { Overview } from "@/components/overview";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Overview } from "@/components/overview";
 
 import { CreditCard, DollarSign, Package } from "lucide-react";
 
