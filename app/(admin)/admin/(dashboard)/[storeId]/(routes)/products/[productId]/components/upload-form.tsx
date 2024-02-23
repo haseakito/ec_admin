@@ -87,7 +87,7 @@ export function UploadForm({ product }: UploadFormProps) {
       // POST request to backend API
       await axios.post(
         process.env.NEXT_PUBLIC_API_URL +
-          `/products/${params.productId}/upload`,
+          `/admin/products/${params.productId}/upload`,
         formData,
         {
           headers: {
@@ -128,7 +128,8 @@ export function UploadForm({ product }: UploadFormProps) {
 
       // DELETE request to backend API
       await axios.delete(
-        process.env.NEXT_PUBLIC_API_URL + `/products/${params.productId}/assets/${productImageId}`,
+        process.env.NEXT_PUBLIC_API_URL +
+          `/admin/products/${params.productId}/assets/${productImageId}`,
         {
           headers: {
             Authorization: `Bearer ${await getToken()}`,

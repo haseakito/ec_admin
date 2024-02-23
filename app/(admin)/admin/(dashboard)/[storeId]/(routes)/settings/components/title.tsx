@@ -36,7 +36,7 @@ export function SettingsTitle() {
 
       // PATCH request to the backend API
       axios.delete(
-        process.env.NEXT_PUBLIC_API_URL + `/stores/${params.storeId}/assets`,
+        process.env.NEXT_PUBLIC_API_URL + `/admin/stores/${params.storeId}`,
         {
           headers: {
             Authorization: `Bearer ${await getToken()}`,
@@ -51,7 +51,7 @@ export function SettingsTitle() {
       router.refresh();
 
       // Redirect to the index page
-      router.push("/");
+      router.push("/admin");
     } catch (error) {
       // Output the error to log
       console.log(error);
@@ -69,7 +69,7 @@ export function SettingsTitle() {
         description="Make sure that you have removed all the products first. Note that this action cannot be undone."
         isOpen={open}
         onClose={() => setOpen(false)}
-        onConfirm={() => onDelete}
+        onConfirm={() => onDelete()}
         loading={loading}
       />
 

@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs";
 
-export async function fetchStores() {
+export async function fetchStores(): Promise<Store[]> {
   const { getToken } = auth();
 
   // GET request to fetch all stores
@@ -12,17 +12,13 @@ export async function fetchStores() {
     },
   });
 
-  if (!res.ok) {
-    throw new Error();
-  }
-
   // Parse json body
   const body = await res.json();
 
   return body;
 }
 
-export async function fetchStore(storeId: string) {
+export async function fetchStore(storeId: string): Promise<Store> {
   const { getToken } = auth();
 
   // GET request to fetch a specific store with store id provided

@@ -38,9 +38,11 @@ interface StoreSwitcherProps extends PopoverTriggerProps {
 }
 
 export function StoreSwitcher({ className, stores = [] }: StoreSwitcherProps) {
-  const storeModal = useStoreModal();
-
+  // Boolean state handling popover
   const [open, setOpen] = useState(false);
+
+  // Hooks handling store modal
+  const storeModal = useStoreModal();
 
   // Hooks handling dynamic params
   const params = useParams();
@@ -48,15 +50,18 @@ export function StoreSwitcher({ className, stores = [] }: StoreSwitcherProps) {
   // Hooks handling router
   const router = useRouter();
 
+  // 
   const formattedItem = stores.map((store) => ({
     label: store.name,
     value: store.id,
   }));
 
+  // 
   const currentStore = formattedItem.find(
     (store) => store.value.toString() === params.storeId
   );
 
+  // Function handling redirecting the user to the selected store
   const onStoreSelect = (store: { value: string; label: string }) => {
     setOpen(false);
     router.push(`/admin/${store.value}`);

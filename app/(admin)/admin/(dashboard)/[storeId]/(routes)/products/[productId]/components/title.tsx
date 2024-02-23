@@ -44,7 +44,7 @@ export function ProductTitle({ product }: ProductTitleProps) {
 
       // DELETE request to backend API
       await axios.delete(
-        process.env.NEXT_PUBLIC_API_URL + `/products/${params.productId}`,
+        process.env.NEXT_PUBLIC_API_URL + `/admin/products/${params.productId}`,
         {
           headers: {
             Authorization: `Bearer ${await getToken()}`,

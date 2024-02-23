@@ -13,7 +13,7 @@ export default async function AdminIndexLayout({
   }
 
   // Fetch all stores
-  const stores: Store[] = await fetchStores();
+  const stores = await fetchStores();
 
   // If there are stores, redirect to the first store page
   if (stores) {

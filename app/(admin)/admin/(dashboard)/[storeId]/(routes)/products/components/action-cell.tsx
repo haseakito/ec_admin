@@ -1,9 +1,8 @@
 "use client";
 
 import axios from "axios";
-import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
+import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 
 import { AlertModal } from "@/components/modals/alert-modal";
@@ -15,6 +14,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 
 import { ProductColumn } from "./columns";
 
@@ -42,7 +42,7 @@ export const ActionCell: React.FC<ActionCellProps> = ({ data }) => {
       setLoading(true);
 
       // DELETE request to backend API
-      await axios.delete(`/products/${data.id}`);
+      await axios.delete(`/admin/products/${data.id}`);
 
       // Show successful toast
       toast.success("Successfully deleted the product.");
@@ -54,7 +54,7 @@ export const ActionCell: React.FC<ActionCellProps> = ({ data }) => {
       console.log(error);
 
       // Show alert toast if the request failed
-      toast.error("Something went wrong");
+      toast.error("Ooops! Something went wrong with your request.");
     } finally {
       setLoading(false);
       setOpen(false);

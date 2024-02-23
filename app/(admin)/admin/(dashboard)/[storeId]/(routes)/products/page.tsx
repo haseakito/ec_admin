@@ -1,6 +1,5 @@
-import React from "react";
 import { ProductsClient } from "./components/client";
-import { fetchProducts } from "@/services/product";
+import { fetchProducts } from "@/services/admin/admin-product";
 import { ProductColumn } from "./components/columns";
 import { formatDate } from "@/utils/format";
 
@@ -12,7 +11,9 @@ interface ProductsPageProps {
 
 export default async function ProductsPage({ params }: ProductsPageProps) {
   // GET request to backend API to fetch products associated with the store
-  const products: Product[] = await fetchProducts(params.storeId);
+  const products = await fetchProducts({
+    storeId: params.storeId
+  });
 
   // Format products for data table
   const formattedProducts: ProductColumn[] = products.map((product) => ({

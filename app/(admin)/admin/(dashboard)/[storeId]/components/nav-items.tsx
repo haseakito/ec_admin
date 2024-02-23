@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 
-export function NavigationMenu({
+export function AdminNavigationMenu({
   className,
   ...props
 }: React.HtmlHTMLAttributes<HTMLElement>) {
@@ -25,6 +25,11 @@ export function NavigationMenu({
       href: `/admin/${params.storeId}/products`,
       label: "Products",
       active: pathname === `/admin/${params.storeId}/products`,
+    },
+    {
+        href: `/admin/${params.storeId}/orders`,
+        label: "Orders",
+        active: pathname === `/admin/${params.storeId}/orders`,
     },
     {
       href: `/admin/${params.storeId}/settings`,

@@ -16,7 +16,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
@@ -35,7 +34,7 @@ export function StoreModal() {
   // Boolean state handling loading during API request
   const [loading, setLoading] = useState(false);
 
-  // Store modal hooks
+  // Hooks handling store modal state
   const storeModal = useStoreModal();
 
   // Initialize form
@@ -54,7 +53,7 @@ export function StoreModal() {
 
       // POST request to the backend API
       const res = await axios.post(
-        process.env.NEXT_PUBLIC_API_URL + "/stores",
+        process.env.NEXT_PUBLIC_API_URL + "/admin/stores",
         {
           name: e.name,
           user_id: userId,
@@ -67,11 +66,11 @@ export function StoreModal() {
         }
       );
 
-      // Refresh page and redirect to the store
-      window.location.assign(`/admin/${res.data.id}`);
-
       // Show successful toast
       toast.success("Successfully created the store");
+
+      // Refresh page and redirect to the store
+      window.location.assign(`/admin/${res.data.id}`);
     } catch (error) {
       // Output the error to log
       console.log(error);
